@@ -55,7 +55,7 @@ Route::prefix('admin')->group(function () {
     Route::post('login', 'Auth\UtilisateurController@login')->name('PostUserLogin');
 
 
-    Route::group(['middleware' => 'auth:admin'], function () {
+    Route::group(['middleware' => ':admin'], function () {
 
 
         Route::get('/home', 'AdminHomeController@index')->name('home');
