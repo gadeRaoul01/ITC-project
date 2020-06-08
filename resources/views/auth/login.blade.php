@@ -17,9 +17,7 @@
 </head>
 
 <body id="sign-in">
-<div class="preloader">
-    <div class="loader_img"><img src="{{asset('assets/img/loader.gif')}}" alt="loading..." height="64" width="64"></div>
-</div>
+
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 login-form">

@@ -5,10 +5,11 @@
                 <i class="fa fa-fw ti-exchange-vertical"></i> Liste de mes transactions
             </h3>
             <span class="pull-right">
-                <a type="button" class="btn btn-primary btn-sm" id="addTaux"><i class=" ti-plus"></i>
+                <a type="button" class="btn btn-default  btn-sm"><b><i class=" ti-arrow-up text-success"> </i> Dépot</b>
+</b>                        </a>
+                <a type="button" class="btn btn-default btn-sm"><b><i
+                    class=" ti-arrow-down  text-danger"> </i> Retrait</b>
                         </a>
-                                <i class="fa fa-fw ti-angle-up clickable"></i>
-                                <i class="fa fa-fw ti-close removepanel clickable"></i>
 
                             </span>
         </div>
@@ -86,9 +87,7 @@
                         {
                             data: function jsRenderCOL(data, type, row, meta) {
                                 var dataRender;
-
-                                console.log(data)
-                                if (data['typeLibelle']  == "depot") {
+                                if (data['typeLibelle'] == "depot") {
                                     dataRender = "<label>Depot <i  class='fa fa-fw ti-arrow-up text-success' ></i> </label>";
                                 } else if (data['typeLibelle'] == "retrait") {
                                     dataRender = "<label>Retrait <i  class='fa fa-fw ti-arrow-down text-danger' ></i> </label>";

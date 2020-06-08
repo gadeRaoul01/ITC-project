@@ -16,7 +16,7 @@ class CreatePortefeuillesTable extends Migration
         Schema::create('portefeuilles', function (Blueprint $table) {
             $table->id();
             $table->string('identifiant');
-            $table->string('solde');
+            $table->string('solde')->default(0);
             $table->string('codePin');
             $table->boolean('flag_etat')->default(false);
 

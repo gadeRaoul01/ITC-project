@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/ITC_MOBILE_SERVER', function () {
+    return view('welcome');
+});
+
 
 
 //Route::get('/home', 'HomeController@index')->name('home');
@@ -77,6 +81,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/postConfig-{group}', 'ConfigurationsController@store');
         Route::post('/changeConfigState-{id}', 'ConfigurationsController@destroy');
 
+        Route::get('/transactions','TransactionController@index')->name('transactions');
 
 
     });;
@@ -91,6 +96,7 @@ Route::group(['middleware' => 'auth:web'], function () {
     });
 
     Route::get('/portefeuille', 'PortefeuilleController@index')->name('portefeuille');
+    Route::get('/investissement', 'InvestissementController@index')->name('investissement');
 
 
 

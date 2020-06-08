@@ -1,12 +1,12 @@
 <template>
-    <div>
-        <h4 class="col-sm-8">
+    <div class="pull-right">
+        <h5 class="col-sm-12">
             <span class="pull-right">  Identifiant : <span class="blue"> {{portefeuilleIdentifiant?portefeuilleIdentifiant  : 0 }} </span></span>
-        </h4>
-        <h4 class="col-sm-8">
+        </h5>
+        <h5 class="col-sm-12">
             <span class="pull-right">  Solde : <span
-                class="blue"> {{ portefeuilleSolde | stringToMoney   }} </span></span>
-        </h4>
+                class="blue"> {{ portefeuilleSolde ? portefeuilleSolde : 0 }} </span></span>
+        </h5>
     </div>
 
 
@@ -24,30 +24,19 @@
         },
         filters: {
             stringToMoney: function (v) {
-                let array = v.split('')
-                // array = array.reverse();
-                let string = ''
-                let i = array.length - 1
-                while (i >= 0) {
-                    let stri = ''
-                    if (array[i]) {
-                        stri = array[i]
-                    }
-                    if (array[i-1]){
-                        stri +=array[i - 1]
-                    }
-                    if (array[i-2]){
-                        stri += array[i - 2] +'.'
-                    }
+               let  value=String(v) ;
+                let long = value.length;
+                let str =  '';
+                let st = ''
+                for (let i = long ; i>=0 ; i++){
+                    st = '.'+value.charAt(i-2)+value.charAt(i-1)+value.charAt(i)
+                    i = i-3
 
-                    string += stri
+                    str  = st+str
 
-                    stri = ''
-                    i = i - 3;
+                    st = ''
                 }
-
-                return array.reverse()
-            }
+               return value.charAt(long-1)            }
         },
         mounted() {
             this.$store.dispatch('loadPortefeuille')

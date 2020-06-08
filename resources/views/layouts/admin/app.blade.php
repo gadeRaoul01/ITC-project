@@ -217,6 +217,13 @@
                             <span class="mm-text "> Configurations </span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="{{route('transactions')}}">
+                            <i class="menu-icon fa fa-fw ti-settings"></i>
+                            <span class="mm-text "> Transactions </span>
+                        </a>
+                    </li>
                     @endhasanyrole
                     <li>
                         <a href="">

@@ -21,5 +21,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware'=>['auth:api']],function (){
 Route::get('MyPortefeuille','api\PortefeuilleController@index');
+Route::get('getSystemeInformations','api\ConfigurationsController@index');
     Route::get('/transacations-{group}', 'api\PortefeuilleController@getTransaction');
+    Route::get('/getInvestissement', 'api\InvestissementController@getInvestissement');
+    Route::post('/storeSommes', 'api\InvestissementController@store');
 });

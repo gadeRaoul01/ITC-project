@@ -153,7 +153,7 @@
         <div class="panel">
             <div class="panel-heading">
                 <h3 class="panel-title">
-                    <i class="fa fa-fw ti-settings"></i> Intervalle d'investissemnt
+                    <i class="fa fa-fw ti-settings"></i> Intervalle d'investissement
                 </h3>
                 <span class="pull-right">
                       <a type="button" class="btn btn-primary btn-sm" id="addIntervalle_invest"><i class=" ti-plus"></i>

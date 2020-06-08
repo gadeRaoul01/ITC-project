@@ -4,20 +4,25 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
 require('./bootstrap');
 
 window.Vue = require('vue');
 import store from './store/clientStore';
+import {mapGetters} from "vuex";
 
-
-
-
-
-
-
+//
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import { BProgress } from 'bootstrap-vue'
+import { BModal } from 'bootstrap-vue'
 
 Vue.component('soldecomponent', require('./components/SoldeComponent').default);
 Vue.component('transactiontablecomponent', require('./components/TransactiontableComponent').default);
+Vue.component('systemeinformationcomponent', require('./components/SystemeinformationComponent').default);
+Vue.component('investissementlistecomponent', require('./components/InvestissementListeComponent').default);
+Vue.component('btnaddcomponent', require('./components/BtnaddComponent').default);
+Vue.component('b-progress', BProgress);
+Vue.component('b-modal', BModal);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -39,5 +44,7 @@ Vue.component('transactiontablecomponent', require('./components/Transactiontabl
 
 const app = new Vue({
     el: '#clientApp',
+
     store ,
+
 });

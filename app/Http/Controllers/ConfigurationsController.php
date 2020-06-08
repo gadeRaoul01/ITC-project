@@ -53,7 +53,7 @@ class ConfigurationsController extends Controller
                 $config->description = $sys->description ;
 
                 $config->param1 = $request->input('nb_recup');
-
+                $config->param4 =  $sys->param4 ;
                 $config->save();
                 $sys->flag_etat = true ;
                 $sys->update();
@@ -76,7 +76,7 @@ class ConfigurationsController extends Controller
 
                 $config->param1 = $request->input('min');
                 $config->param2 = $request->input('max');
-
+                $config->param4 =  $sys->param4 ;
                 $config->save();
                 $sys->flag_etat = true ;
                 $sys->update();
@@ -98,7 +98,7 @@ class ConfigurationsController extends Controller
                 $config->description = $sys->description ;
 
                 $config->param1 = $request->input('nb_jr');
-
+                $config->param4 =  $sys->param4 ;
                 $config->save();
                 $sys->flag_etat = true ;
                 $sys->update();
@@ -120,7 +120,7 @@ class ConfigurationsController extends Controller
                 $config->description = $sys->description ;
 
                 $config->param1 = $request->input('nbInvest');
-
+                $config->param4 =  $sys->param4 ;
                 $config->save();
                 $sys->flag_etat = true ;
                 $sys->update();
@@ -142,7 +142,7 @@ class ConfigurationsController extends Controller
                 $config->description = $sys->description ;
 
                 $config->param1 = $request->input('taux');
-
+                $config->param4 =  $sys->param4 ;
                 $config->save();
                 $sys->flag_etat = true ;
                 $sys->update();

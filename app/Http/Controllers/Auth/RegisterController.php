@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Portefeuille;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -45,7 +48,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -53,14 +56,14 @@ class RegisterController extends Controller
         return Validator::make($data, [
 
 //            'name' => ['required', 'string', 'max:255'],
-            'nom' => ['required', 'string', 'max:255', ],
-            'prenom' => ['required', 'string', 'max:255', ],
-            'sexe' => ['required', 'string', 'max:255', ],
-            'dateNaissance' => ['required', 'string', 'max:255', ],
-            'contact' => ['required', 'string', 'max:255', ],
-            'adresse' => ['required', 'string', 'max:255', ],
-            'email' => ['required', 'string', 'email', 'max:255', ],
-            'password' => ['required', 'string', 'max:255', ],
+            'nom' => ['required', 'string', 'max:255',],
+            'prenom' => ['required', 'string', 'max:255',],
+            'sexe' => ['required', 'string', 'max:255',],
+            'dateNaissance' => ['required', 'string', 'max:255',],
+            'contact' => ['required', 'string', 'max:255',],
+            'adresse' => ['required', 'string', 'max:255',],
+            'email' => ['required', 'string', 'email', 'max:255',],
+            'password' => ['required', 'string', 'max:255',],
 //            'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
     }
@@ -68,14 +71,14 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\User
      */
     protected function create(array $data)
     {
 
 //        dd($data);
-        return User::create([
+        $user = User::create([
             'nom' => $data['nom'],
             'prenom' => $data['prenom'],
             'sexe' => $data['sexe'],
@@ -85,6 +88,17 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $portefeuille = new Portefeuille();
+        $portefeuille->identifiant = Str::random(12);
+        $portefeuille->codePin = '1234';
+        $portefeuille->user_id = $user->id;
+
+        $portefeuille->save();
+
+        $role = Role::where('name','=','Utilisateur')->first();
+        $user->assignRole($role);
+        return $user;
     }
 
     /**

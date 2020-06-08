@@ -187,7 +187,7 @@
                 <ul class="navigation">
                     @hasanyrole('utilisateur')
                     <li>
-                        <a href="">
+                        <a href="{{route('investissement')}}">
                             <i class="menu-icon ti-user"></i>
                             <span class="mm-text ">Mes investissements</span>
                         </a>
